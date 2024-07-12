@@ -2,9 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@store": ["src/store"],
       "@assets/*": ["src/assets/*"],
       "@routes": ["src/routes"],
       "@pages": ["src/pages"],
+      "@features": ["src/features"],
+      "@services": ["src/services"],
+      "@types": ["src/types"],
+      "@hooks": ["src/hooks"],
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
