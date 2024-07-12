@@ -18,9 +18,11 @@ export interface INestedError {
   status: number
 }
 
-export interface IParsedError {
+export interface IParsedErrorBody {
   message: string
   status: number | null
 }
+
+export type ParsedError = IParsedErrorBody | null
 
 export type ApiError = IError | INestedError | undefined
