@@ -7,6 +7,14 @@ const baseLinks: INavigationLink[] = [
   {
     label: 'Main',
     path: '/'
+  },
+  {
+    label: 'Saved',
+    path: '/saved'
+  },
+  {
+    label: 'Cart',
+    path: '/cart'
   }
 ]
 
