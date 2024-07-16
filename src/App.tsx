@@ -1,9 +1,5 @@
 import { RoutesList } from '@routes'
 
-const App = () => (
-  <div className="min-h-screen">
-    <RoutesList />
-  </div>
-)
+const App = () => <RoutesList />
 
 export default App
