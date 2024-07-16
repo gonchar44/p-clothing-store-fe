@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@config": ["src/config"],
+      "@hoc": ["src/hoc"],
       "@store": ["src/store"],
       "@assets/*": ["src/assets/*"],
       "@routes": ["src/routes"],
