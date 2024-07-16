@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@config": ["src/config"],
       "@store": ["src/store"],
       "@assets/*": ["src/assets/*"],
       "@routes": ["src/routes"],
