@@ -21,20 +21,27 @@ export const LoginForm = () => {
   const parsedLoginError = useParseError(loginError as ApiError)
   const isError = !!parsedLoginError
 
-  const { values, errors, isValid, handleChange, handleSubmit } = useFormik({
-    initialValues,
-    validationSchema,
-    validateOnChange: isTriggered,
-    onSubmit: async (values) => {
-      try {
-        await login(values).unwrap()
-        navigate('/')
-      } catch (error) {
-        return error
+  const { values, errors, submitCount, isValid, handleChange, handleSubmit } =
+    useFormik({
+      initialValues,
+      validationSchema,
+      validateOnChange: isTriggered,
+      onSubmit: async (values) => {
+        try {
+          await login(values).unwrap()
+          navigate('/')
+        } catch (error) {
+          return error
+        }
       }
-    }
-  })
+    })
   const isSubmitDisabled = !isValid || isLoginLoading || !!parsedLoginError
+
+  useEffect(() => {
+    if (!isTriggered && submitCount > 0) {
+      setIsTriggered(true)
+    }
+  }, [submitCount])
 
   useEffect(() => {
     if (loginError) {
@@ -45,11 +52,7 @@ export const LoginForm = () => {
   return (
     <form
       className="w-full flex flex-col items-center gap-y-2"
-      onSubmit={(e) => {
-        e.preventDefault()
-        handleSubmit()
-        setIsTriggered(true)
-      }}
+      onSubmit={handleSubmit}
     >
       <Field
         name="identifier"
