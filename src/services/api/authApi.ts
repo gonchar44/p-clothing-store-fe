@@ -18,7 +18,9 @@ export const authApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [Tags.user],
       async onQueryStarted(_, { queryFulfilled }) {
-        manageAuthCookies(queryFulfilled).catch((error) => error)
+        try {
+          await manageAuthCookies(queryFulfilled)
+        } catch (error) {}
       }
     }),
     register: build.mutation<ITokens, IRegisterBody>({

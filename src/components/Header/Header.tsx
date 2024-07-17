@@ -6,7 +6,7 @@ export const Header = () => {
   const links = useHeaderNavigation()
 
   return (
-    <header className="flex items-center p-2 sticky top-0 left-0">
+    <header className="flex justify-center items-center p-2 sticky top-0 left-0">
       <Navigation links={links} />
     </header>
   )
