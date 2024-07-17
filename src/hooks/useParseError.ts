@@ -24,7 +24,9 @@ export const useParseError = (originalError: ApiError): ParsedError => {
   }
 
   useEffect(() => {
-    if (!originalError) return
+    if (!originalError) {
+      return setParsedError(null)
+    }
 
     parseError()
   }, [originalError])

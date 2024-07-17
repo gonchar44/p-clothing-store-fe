@@ -34,7 +34,7 @@ export const useHeaderNavigation = (): INavigationLink[] => {
       return [
         ...baseLinks,
         {
-          label: 'Login',
+          label: 'Log in',
           path: '/login'
         }
       ]
