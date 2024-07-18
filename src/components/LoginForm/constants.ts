@@ -1,1 +1,4 @@
-export const initialValues = { identifier: '', password: '' }
+export const initialValues = {
+  identifier: '',
+  password: ''
+}

@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Field } from '@gonchar44/react-components-pack'
-import { BottomButtons } from './molecules'
 import { useFormik } from 'formik'
 import { initialValues } from './constants.ts'
 import { validationSchema } from './validationSchema.ts'
 import { useLoginMutation } from '@services'
 import { useParseError } from '@hooks'
 import { ApiError } from '@types'
-import { ErrorMessage } from '@components'
+import { ErrorMessage, FormButtons } from '@components'
 
 export const LoginForm = () => {
   const [isTriggered, setIsTriggered] = useState(false)
@@ -37,12 +36,14 @@ export const LoginForm = () => {
     })
   const isSubmitDisabled = !isValid || isLoginLoading || !!parsedLoginError
 
+  // Allows validation on changed after first trying of submit
   useEffect(() => {
     if (!isTriggered && submitCount > 0) {
       setIsTriggered(true)
     }
   }, [submitCount])
 
+  // Resetting login error
   useEffect(() => {
     if (loginError) {
       resetLoginError()
@@ -56,9 +57,10 @@ export const LoginForm = () => {
     >
       <Field
         name="identifier"
-        $label="Identifier"
-        placeholder="Enter your identifier"
+        $label="Username"
+        placeholder="Enter your username"
         value={values.identifier}
+        $max={45}
         $isError={isError}
         $errorMessage={errors.identifier}
         onChange={handleChange}
@@ -70,6 +72,7 @@ export const LoginForm = () => {
         placeholder="Enter your password"
         type="password"
         value={values.password}
+        $max={100}
         $isError={isError}
         $errorMessage={errors.password}
         onChange={handleChange}
@@ -77,7 +80,12 @@ export const LoginForm = () => {
 
       {parsedLoginError && <ErrorMessage message={parsedLoginError.message} />}
 
-      <BottomButtons isSubmitDisabled={isSubmitDisabled} />
+      <FormButtons
+        isSubmitDisabled={isSubmitDisabled}
+        submitText="Log in"
+        secondaryText="Create account"
+        secondaryAction={() => navigate('/create-account')}
+      />
     </form>
   )
 }
