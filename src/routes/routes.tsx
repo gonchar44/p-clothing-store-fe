@@ -1,6 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { LoginPage, ProfilePage, MainPage, NotfoundPage } from '@pages'
+import {
+  LoginPage,
+  ProfilePage,
+  MainPage,
+  NotfoundPage,
+  CreateAccountPage
+} from '@pages'
 import { selectIsAuthorized } from '@store'
 import { PublicRoute, ProtectedRoute } from '@routes'
 import { Layout } from '@hoc'
@@ -30,6 +36,7 @@ export const RoutesList = () => {
               <PublicRoute isAuthorized={isAuthorized} redirectPath="/" />
             }
           >
+            <Route path="/create-account" element={<CreateAccountPage />} />
             <Route path="/login" element={<LoginPage />} />
           </Route>
 

@@ -1,24 +1,28 @@
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Field } from '@gonchar44/react-components-pack'
+import { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
-import { initialValues } from './constants.ts'
-import { validationSchema } from './validationSchema.ts'
-import { useLoginMutation } from '@services'
+import { Field } from '@gonchar44/react-components-pack'
+import { useRegisterMutation } from '@services'
 import { useParseError } from '@hooks'
 import { ApiError } from '@types'
+import { initialValues } from './constants.ts'
+import { validationSchema } from './validationSchema.ts'
 import { ErrorMessage, FormButtons } from '@components'
 
-export const LoginForm = () => {
+export const CreateAccountForm = () => {
   const [isTriggered, setIsTriggered] = useState(false)
-
   const navigate = useNavigate()
+
   const [
-    login,
-    { isLoading: isLoginLoading, error: loginError, reset: resetLoginError }
-  ] = useLoginMutation()
-  const parsedLoginError = useParseError(loginError as ApiError)
-  const isError = !!parsedLoginError
+    register,
+    {
+      isLoading: isRegisterLoading,
+      error: registerError,
+      reset: resetRegisterError
+    }
+  ] = useRegisterMutation()
+  const parsedRegisterError = useParseError(registerError as ApiError)
+  const isError = !!parsedRegisterError
 
   const { values, errors, submitCount, isValid, handleChange, handleSubmit } =
     useFormik({
@@ -27,14 +31,15 @@ export const LoginForm = () => {
       validateOnChange: isTriggered,
       onSubmit: async (values) => {
         try {
-          await login(values).unwrap()
-          navigate('/')
+          await register(values).unwrap()
+          navigate('/login')
         } catch (error) {
           return error
         }
       }
     })
-  const isSubmitDisabled = !isValid || isLoginLoading || !!parsedLoginError
+  const isSubmitDisabled =
+    !isValid || isRegisterLoading || !!parsedRegisterError
 
   // Allows validation on changed after first trying of submit
   useEffect(() => {
@@ -43,10 +48,10 @@ export const LoginForm = () => {
     }
   }, [submitCount])
 
-  // Resetting login error
+  // Resetting registration error
   useEffect(() => {
-    if (loginError) {
-      resetLoginError()
+    if (registerError) {
+      resetRegisterError()
     }
   }, [values])
 
@@ -56,13 +61,24 @@ export const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       <Field
-        name="identifier"
+        name="email"
+        $label="Email"
+        placeholder="Enter your email"
+        value={values.email}
+        $max={100}
+        $isError={isError}
+        $errorMessage={errors.email}
+        onChange={handleChange}
+      />
+
+      <Field
+        name="username"
         $label="Username"
         placeholder="Enter your username"
-        value={values.identifier}
+        value={values.username}
         $max={45}
         $isError={isError}
-        $errorMessage={errors.identifier}
+        $errorMessage={errors.username}
         onChange={handleChange}
       />
 
@@ -78,13 +94,15 @@ export const LoginForm = () => {
         onChange={handleChange}
       />
 
-      {parsedLoginError && <ErrorMessage message={parsedLoginError.message} />}
+      {parsedRegisterError && (
+        <ErrorMessage message={parsedRegisterError.message} />
+      )}
 
       <FormButtons
         isSubmitDisabled={isSubmitDisabled}
-        submitText="Log in"
-        secondaryText="Create account"
-        secondaryAction={() => navigate('/create-account')}
+        submitText="Register"
+        secondaryText="Log in"
+        secondaryAction={() => navigate('/login')}
       />
     </form>
   )
