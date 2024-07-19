@@ -11,7 +11,7 @@
     "format": "prettier --write './**/*.{jsx,ts,tsx,css,json}'"
   },
   "dependencies": {
-    "@gonchar44/react-components-pack": "^0.1.9",
+    "@gonchar44/react-components-pack": "^0.2.3",
     "@reduxjs/toolkit": "^2.2.5",
     "async-mutex": "^0.5.0",
     "formik": "^2.4.6",
