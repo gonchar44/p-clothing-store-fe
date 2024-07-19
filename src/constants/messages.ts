@@ -4,5 +4,6 @@ export const Messages = {
   maxCharsLength: ({ length }: { length: number }) =>
     `Maximum number of characters is ${length}`,
   requiredField: 'The field is required',
-  emailType: 'Please enter a valid email'
+  emailType: 'Please enter a valid email',
+  passwordsMatch: 'Please make sure your passwords match'
 }
