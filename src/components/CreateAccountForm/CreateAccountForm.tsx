@@ -29,9 +29,9 @@ export const CreateAccountForm = () => {
       initialValues,
       validationSchema,
       validateOnChange: isTriggered,
-      onSubmit: async (values) => {
+      onSubmit: async ({ confirmPassword, ...data }) => {
         try {
-          await register(values).unwrap()
+          await register({ ...data }).unwrap()
           navigate('/login')
         } catch (error) {
           return error
@@ -91,6 +91,18 @@ export const CreateAccountForm = () => {
         $max={100}
         $isError={isError}
         $errorMessage={errors.password}
+        onChange={handleChange}
+      />
+
+      <Field
+        name="confirmPassword"
+        $label="Confirm password"
+        placeholder="Confirm your password"
+        type="password"
+        value={values.confirmPassword}
+        $max={100}
+        $isError={isError}
+        $errorMessage={errors.confirmPassword}
         onChange={handleChange}
       />
 
