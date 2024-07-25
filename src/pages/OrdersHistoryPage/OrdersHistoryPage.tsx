@@ -1,1 +1,3 @@
-export const OrdersHistoryPage = () => <section>OrdersHistory</section>
+export const OrdersHistoryPage = () => (
+  <section className="w-full">OrdersHistory</section>
+)
