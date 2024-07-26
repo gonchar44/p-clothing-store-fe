@@ -9,7 +9,8 @@ export const theme = {
       dark: 'rgba(0, 0, 0, 0.5)',
       light: '#a1a1a1',
       error: '#ef3939',
-      success: '#478f47'
+      success: '#478f47',
+      transparent: 'transparent'
     }
   }
 }

@@ -6,9 +6,9 @@ interface ILayoutProps {
 }
 
 export const Layout: FC<ILayoutProps> = ({ children }) => (
-  <div className="min-h-screen bg-primary-muted">
+  <div className="min-h-screen bg-primary-muted flex flex-col">
     <Header />
 
-    <div className="p-4">{children}</div>
+    <div className="w-full flex flex-grow p-8">{children}</div>
   </div>
 )

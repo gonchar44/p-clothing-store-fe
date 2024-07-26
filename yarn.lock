@@ -385,10 +385,10 @@
   resolved "https://registry.npmjs.org/@eslint/js/-/js-8.57.0.tgz"
   integrity sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==
 
-"@gonchar44/react-components-pack@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@gonchar44/react-components-pack/-/react-components-pack-0.2.3.tgz#774665c1be7c7927b95099d3fba0fa5a819da7da"
-  integrity sha512-ZWh5KSM3CPhKFDWonNOMJWdPsvvYGulYWF/Ti74lSYELnAECmf+EX8LEkIAYHMjIMcUF7DbCrb5MITu5dLsyuQ==
+"@gonchar44/react-components-pack@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@gonchar44/react-components-pack/-/react-components-pack-0.2.5.tgz#399998997bb0c89c1b2b477cd8ab64779828d7bb"
+  integrity sha512-OFsCs7urNKU4wWpiQcoQm38Wh/XYW41feea8hdm8UWS9Ulbhk58wby/2t/dHaOloo+cNlZfZ1w/kT3Zer43ASg==
   dependencies:
     "@types/styled-components" "^5.1.34"
     styled-components "^6.1.11"
@@ -997,6 +997,11 @@ chokidar@^3.5.3:
     readdirp "~3.6.0"
   optionalDependencies:
     fsevents "~2.3.2"
+
+classnames@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.npmjs.org/classnames/-/classnames-2.5.1.tgz"
+  integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
 
 color-convert@^1.9.0:
   version "1.9.3"
@@ -2017,6 +2022,11 @@ react-router@6.23.1:
   integrity sha512-fzcOaRF69uvqbbM7OhvQyBTFDVrrGlsFdS3AL+1KfIBtGETibHzi3FkoTRyiDJnWNc2VxrfvR+657ROHjaNjqQ==
   dependencies:
     "@remix-run/router" "1.16.1"
+
+react-spinners@^0.14.1:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.14.1.tgz#de7d7d6b3e6d4f29d9620c65495b502c7dd90812"
+  integrity sha512-2Izq+qgQ08HTofCVEdcAQCXFEYfqTDdfeDQJeo/HHQiQJD4imOicNLhkfN2eh1NYEWVOX4D9ok2lhuDB0z3Aag==
 
 react@^18.2.0:
   version "18.3.1"

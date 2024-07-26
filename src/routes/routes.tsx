@@ -27,7 +27,7 @@ export const RoutesList = () => {
               />
             }
           >
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile/*" element={<ProfilePage />} />
           </Route>
 
           {/*Only public routes*/}
